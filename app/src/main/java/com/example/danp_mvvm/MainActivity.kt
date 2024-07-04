@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.danp_mvvm.ui.theme.DANP_MVVMTheme
 import com.example.danp_mvvm.ui.view.PaintingListScreen
 import com.example.danp_mvvm.ui.viewmodel.PaintingViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
