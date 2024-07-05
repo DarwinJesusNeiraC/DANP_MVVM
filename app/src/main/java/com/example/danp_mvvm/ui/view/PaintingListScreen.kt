@@ -13,8 +13,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class PaintingViewModel @Inject constructor(
+class PaintingListScreen @Inject constructor(
     private val repository: PaintingRepository // Suponiendo que tienes un repositorio
 ) : ViewModel() {
-    val paintings: LiveData<List<Painting>> = repository.getPaintings()
+    val paintings: List<Painting> = repository.getPaintings()
 }
