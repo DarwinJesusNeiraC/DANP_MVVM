@@ -11,19 +11,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.danp_mvvm.data.repository.PaintingRepository
+import com.example.danp_mvvm.domain.repository.PaintingRepositoryImpl
+import com.example.danp_mvvm.domain.usecase.GetPaintingsUseCase
 import com.example.danp_mvvm.ui.theme.DANP_MVVMTheme
-import com.example.danp_mvvm.ui.view.PaintingListScreen
+import com.example.danp_mvvm.ui.view.PaintingList
 import com.example.danp_mvvm.ui.viewmodel.PaintingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             DANP_MVVMTheme {
-                PaintingListScreen()
+                PaintingList(PaintingViewModel(GetPaintingsUseCase(PaintingRepositoryImpl())))
             }
         }
     }
