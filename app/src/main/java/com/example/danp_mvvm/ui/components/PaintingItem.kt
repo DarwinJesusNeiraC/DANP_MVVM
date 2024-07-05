@@ -28,6 +28,7 @@ fun PaintingItem(painting: PaintingDomainModel) {
         ) {
             Text(text = painting.title)
             Text(text = painting.artist)
+            Text(text = painting.imageUrl)  // Muestra la URL como texto
         }
     }
 }
