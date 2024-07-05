@@ -1,30 +1,36 @@
 package com.example.danp_mvvm.data.source.local
 
-import PaintingDao
-import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.danp_mvvm.data.model.Painting
 
-@Database(entities = [Painting::class], version = 1)
-abstract class PaintingDatabase : RoomDatabase() {
-    abstract fun paintingDao(): PaintingDao
+// Clase singleton para manejar los datos en memoria
+object PaintingDatabase {
+    private val paintingList = mutableListOf<Painting>()
 
-    companion object {
-        @Volatile
-        private var INSTANCE: PaintingDatabase? = null
+    // Obtener todas las pinturas
+    fun getAllPaintings(): List<Painting> {
+        return paintingList
+    }
 
-        fun getDatabase(context: Context): PaintingDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    PaintingDatabase::class.java,
-                    "painting_database"
-                ).build()
-                INSTANCE = instance
-                instance
-            }
+    // Agregar una nueva pintura
+    fun addPainting(painting: Painting) {
+        paintingList.add(painting)
+    }
+
+    // Obtener una pintura por ID
+    fun getPaintingById(id: Int): Painting? {
+        return paintingList.find { it.id == id }
+    }
+
+    // Actualizar una pintura existente
+    fun updatePainting(updatedPainting: Painting) {
+        val index = paintingList.indexOfFirst { it.id == updatedPainting.id }
+        if (index != -1) {
+            paintingList[index] = updatedPainting
         }
+    }
+
+    // Eliminar una pintura por ID
+    fun deletePaintingById(id: Int) {
+        paintingList.removeAll { it.id == id }
     }
 }
