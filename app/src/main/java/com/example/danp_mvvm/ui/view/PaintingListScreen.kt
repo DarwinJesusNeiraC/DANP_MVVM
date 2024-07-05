@@ -35,7 +35,7 @@ fun PaintingList(viewModel: PaintingViewModel) {
 
         LazyColumn {
             items(paintings.value) { painting ->
-                PaintingItem(painting = painting)
+                PaintingItem(painting = painting, onDeleteClick = { viewModel.removePainting(painting) })
             }
         }
     }

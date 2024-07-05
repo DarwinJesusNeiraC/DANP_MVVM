@@ -22,6 +22,14 @@ class PaintingViewModel(private val getPaintingsUseCase: GetPaintingsUseCase) : 
         }
         _paintings.value = updatedList
     }
+
+    // Método para manejar el evento de eliminar pintura
+    fun removePainting(painting: PaintingDomainModel) {
+        val updatedList = _paintings.value.orEmpty().toMutableList().apply {
+            remove(painting)
+        }
+        _paintings.value = updatedList
+    }
 }
 
 class PaintingViewModelFactory(private val getPaintingsUseCase: GetPaintingsUseCase) : ViewModelProvider.Factory {
