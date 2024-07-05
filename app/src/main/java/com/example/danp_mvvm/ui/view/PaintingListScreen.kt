@@ -8,6 +8,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.danp_mvvm.data.model.Painting
 import com.example.danp_mvvm.data.repository.PaintingRepository
+import com.example.danp_mvvm.domain.repository.PaintingRepositoryImpl
+import com.example.danp_mvvm.domain.usecase.GetPaintingsUseCase
 import com.example.danp_mvvm.ui.components.PaintingItem
 import com.example.danp_mvvm.ui.viewmodel.PaintingViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,3 +26,4 @@ fun PaintingList(viewModel: PaintingViewModel) {
         }
     }
 }
+
